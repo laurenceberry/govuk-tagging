@@ -174,103 +174,73 @@
 
   </datalist>
 
+  {% for subtheme in theme %}
+    {% if subtheme.subtheme == subthemeNumber %}
 
-      {% for subtheme in theme %}
-        {% if subtheme.subtheme == subthemeNumber %}
-          {% for group in subtheme.groups %}
-            {% if group.group == groupNumber %}
+      {% set loopCount = 0 %}
 
-              <div class="breadcrumbs">
-                <ol>
-                  <li><a href="/tagger/project/content">Education</a></li>
-                  <li><a href="/tagger/project/content">{{ subtheme.name }}</a></li>
-                </ol>
+      <div class="breadcrumbs">
+        <ol>
+          <li><a href="/tagger/project/content">Education</a></li>
+          <li><a href="/tagger/project/content">{{ subtheme.name }}</a></li>
+        </ol>
 
-              </div>
+      </div>
 
-              <div class="grid-row">
-                <div class="column-two-thirds">
-                  <h1 class="heading-large">
-                    Tagged items from Group {{ group.group }}
-                  </h1>
-                </div>
-              </div>
+      <div class="grid-row">
+        <div class="column-two-thirds">
+          <h1 class="heading-large">
+            All tagged content for {{ subtheme.name }}
+          </h1>
+        </div>
+      </div>
 
-              {% set remainingCount = 0 %}
-              {% set doneCount = 0 %}
 
-              {% for item in group.items %}
-                {% if data["tag-subtheme"+subtheme.subtheme+"-group"+group.group+"-item"+item.item]|length == 0 %}
-                  {% set remainingCount = remainingCount +1 %}
-                {% else %}
-                  {% set doneCount = doneCount +1 %}
-                {% endif %}
+      <div class="column-one-whole">
+        <form class="form" action="/tagger/project/content" method="post">
+          <table class="summary-item-body table-type">
+
+            <thead class="summary-item-field-headings-visible">
+              <tr>
+                <th scope="col" class="summary-item-field-heading-first-half" >            
+                  Name
+                </th>
+
+                <th scope="col" class="summary-item-field-heading">    
+                  <span>Tagged by</span>
+                </th>
+
+                <th>Issue</th>
+
+                <th scope="col" class="summary-item-field-heading">    
+                  <span>Tags</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {% for group in subtheme.groups %}
+                {% for item in group.items %}
+                  {% if data["tag-subtheme"+subtheme.subtheme+"-group"+group.group+"-item"+item.item]|length >= 1 %}
+                    <tr>
+                      <td><a href="{{ item.url }}">{{ item.name }}</a></td>
+                      <td>laurence.berry@digital.cabinet-office.gov.uk</td>
+                      <td>Test comment Test comment Test comment Test comment</td>
+                      <td style="text-align: right;">
+                        <input list="browsers" class="form-control" id="tags" name="tag-subtheme{{subtheme.subtheme}}-group{{group.group}}-item{{item.item}}" type="text" style="width: 100%;"  autocomplete="on"  placeholder="Add a tag" value={{data["tag-subtheme"+subtheme.subtheme+"-group"+group.group+"-item"+item.item]}}>
+                      </td>
+                    </tr>
+                  {% endif %}
+                {% endfor %}
               {% endfor %}
+            </tbody>
+          </table><br>
+          <input class="button" type="submit" value="Update">
+        </form>
 
-
-              <div class="grid-row">
-                <div class="column-one-third">
-                  <h3>
-                    <span class="heading-large">
-
-                    {{remainingCount}}
-
-                    </span><br>
-                    <span class="">Still to do</span><br>
-                    <a href="/tagger/group/content?subthemeNumber={{ subtheme.subtheme }}&groupNumber={{ group.group }}">View</a>
-                  </h3><br>
-                </div>
-                <div class="column-one-third">
-                  <h3>
-                    <span class="heading-large">
-
-                    {{doneCount}}
-
-                    </span><br>
-                    <span class="">Tagged</span><br>
-                  </h3><br>
-                </div>
-              </div>
-
-              <div class="column-one-whole">
-                <form class="form" action="/tagger/project/content" method="post">
-                  <table class="summary-item-body table-type">
-
-                    <thead class="summary-item-field-headings-visible">
-                      <tr>
-                        <th scope="col" class="summary-item-field-heading-first-half" >            
-                          Name
-                        </th>
-
-                        <th scope="col" class="summary-item-field-heading">    
-                          <span>Tags</span>
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-
-                      {% for item in group.items %}
-                        {% if data["tag-subtheme"+subtheme.subtheme+"-group"+group.group+"-item"+item.item]|length >= 1 %}
-                          <tr>
-                            <td><a href="{{ item.url }}">{{ item.name }}</a></td>
-                            <td style="text-align: right;">
-                              <input list="browsers" class="form-control" id="tags" name="tag-subtheme{{subtheme.subtheme}}-group{{group.group}}-item{{item.item}}" type="text" style="width: 100%;"  autocomplete="on"  placeholder="E.g. education, training and skills" value={{data["tag-subtheme"+subtheme.subtheme+"-group"+group.group+"-item"+item.item]}}>
-                            </td>
-                          </tr>
-                        {% endif %}
-                      {% endfor %}
-                    </tbody>
-                  </table><br>
-                  <input class="button" type="submit" value="Update">
-                </form>
-
-              </div>
-
-            {% endif %}
-          {% endfor %}
-        {% endif %}
-      {% endfor %}
-
+      </div>
+    {% endif %}
+  {% endfor %}
 </main>
 
 {% endblock %}

@@ -191,7 +191,7 @@
               <div class="grid-row">
                 <div class="column-two-thirds">
                   <h1 class="heading-large">
-                    Group {{ group.group }}
+                    Tagged items from Group {{ group.group }}
                   </h1>
                 </div>
               </div>
@@ -207,6 +207,7 @@
                 {% endif %}
               {% endfor %}
 
+
               <div class="grid-row">
                 <div class="column-one-third">
                   <h3>
@@ -215,7 +216,8 @@
                     {{remainingCount}}
 
                     </span><br>
-                    <span class="">Still to do</span>
+                    <span class="">Still to do</span><br>
+                    <a href="/tagger/group/content?subthemeNumber={{ subtheme.subtheme }}&groupNumber={{ group.group }}">View</a>
                   </h3><br>
                 </div>
                 <div class="column-one-third">
@@ -226,7 +228,6 @@
 
                     </span><br>
                     <span class="">Tagged</span><br>
-                    <a href="/tagger/done/content?subthemeNumber={{ subtheme.subtheme }}&groupNumber={{ group.group }}">View</a>
                   </h3><br>
                 </div>
               </div>
@@ -247,24 +248,20 @@
                       </tr>
                     </thead>
                     <tbody>
-                      {% set loopCount = 0 %}
+
                       {% for item in group.items %}
-                        {% if data["tag-subtheme"+subtheme.subtheme+"-group"+group.group+"-item"+item.item]|length == 0 %}
-                          {% set loopCount = loopCount +1 %}
-                          {% if loopCount <= 5 %}
-                            <tr>
-                              <td><a href="{{ item.url }}">{{ item.name }}</a></td>
-                              <td style="text-align: right;">
-                                <input list="browsers" class="form-control" id="tags" name="tag-subtheme{{subtheme.subtheme}}-group{{group.group}}-item{{item.item}}" type="text" style="width: 100%;"  autocomplete="on"  placeholder="Add a tag" value={{data["tag-subtheme"+subtheme.subtheme+"-group"+group.group+"-item"+item.item]}}>
-                              </td>
-                            </tr>
-                          {% endif %}
+                        {% if data["tag-subtheme"+subtheme.subtheme+"-group"+group.group+"-item"+item.item]|length >= 1 %}
+                          <tr>
+                            <td><a href="{{ item.url }}">{{ item.name }}</a></td>
+                            <td style="text-align: right;">
+                              <input list="browsers" class="form-control" id="tags" name="tag-subtheme{{subtheme.subtheme}}-group{{group.group}}-item{{item.item}}" type="text" style="width: 100%;"  autocomplete="on"  placeholder="Add a tag" value={{data["tag-subtheme"+subtheme.subtheme+"-group"+group.group+"-item"+item.item]}}>
+                            </td>
+                          </tr>
                         {% endif %}
                       {% endfor %}
-
                     </tbody>
                   </table><br>
-                  <input class="button" type="submit" value="Save and continue">
+                  <input class="button" type="submit" value="Update">
                 </form>
 
               </div>
