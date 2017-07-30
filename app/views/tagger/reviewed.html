@@ -1,0 +1,278 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+
+  <datalist id="browsers">
+
+    <option value="Academy financial management and reporting">
+    <option value="Academy funding and compliance">
+    <option value="Admissions and census data for childcare providers">
+    <option value="Adopting a child">
+    <option value="Adoption">
+    <option value="Adoption agencies">
+    <option value="Adoption, fostering and surrogacy">
+    <option value="Adult and community learning">
+    <option value="Alternative provision and pupil referral units">
+    <option value="Alternatives to school">
+    <option value="Apprenticeships, traineeships and internships">
+    <option value="Assessments (key stage 1)">
+    <option value="Assessments (key stage 2)">
+    <option value="Becoming a children's social care provider">
+    <option value="Being an apprentice">
+    <option value="Careers guidance in further and higher education">
+    <option value="Careers guidance in schools">
+    <option value="Child abduction and cross-border child protection">
+    <option value="Child and family social workers">
+    <option value="Child poverty">
+    <option value="Childcare">
+    <option value="Childcare for children with special needs, disabilities or disadvantages">
+    <option value="Childminding">
+    <option value="Children and young people leaving care">
+    <option value="Children's centres">
+    <option value="Children's health and welfare">
+    <option value="Children's homes and other accommodation">
+    <option value="Children's rights">
+    <option value="Children's social care providers">
+    <option value="Complaints">
+    <option value="Dealing with problems at school">
+    <option value="Dealing with problems at school">
+    <option value="Divorce, separation and legal issues">
+    <option value="Early years curriculum">
+    <option value="Early years curriculum (0 to 5)">
+    <option value="Education in prisons">
+    <option value="Education of disadvantaged children">
+    <option value="Education, training and skills">
+    <option value="EFA Tags">
+    <option value="Employers and training organisations">
+    <option value="English (key stage 1)">
+    <option value="English (key stage 2)">
+    <option value="Financial help for international students in the UK">
+    <option value="Financial help for post 16 education">
+    <option value="Financial help for post 16 education">
+    <option value="Financial help for students who are parents or carers">
+    <option value="Financial help if you have children">
+    <option value="Finding and paying for childcare">
+    <option value="Fostering">
+    <option value="Fostering a child">
+    <option value="Fostering services">
+    <option value="Funding and finance for childcare providers">
+    <option value="Funding and finance for further or higher education providers">
+    <option value="Funding and finance for schools and academies">
+    <option value="Funding and finance for students">
+    <option value="Funding for 16 to 19 year olds">
+    <option value="Funding for special educational needs and disability (SEND)">
+    <option value="Further and higher education courses and qualifications">
+    <option value="Further and higher education, skills and vocational training">
+    <option value="GCSE changes and reforms">
+    <option value="GCSE subject content and requirements">
+    <option value="Health and safety in schools">
+    <option value="Help for children with a long-term illness or disability">
+    <option value="Help with school costs">
+    <option value="Help with school costs">
+    <option value="Home schooling">
+    <option value="Home schooling">
+    <option value="Home schooling">
+    <option value="Initial Teacher Training (ITT)">
+    <option value="Inspection and performance of further education providers">
+    <option value="inspection of boarding and residential schools">
+    <option value="Inspection of British schools overseas">
+    <option value="Inspection of children's social care providers">
+    <option value="Inspection of further education and skills providers">
+    <option value="Inspection of independent schools">
+    <option value="Inspection of maintained schools and academies">
+    <option value="Inspection of residential provision in further education colleges">
+    <option value="Intercountry adoption">
+    <option value="Internships">
+    <option value="Key stage 3 and 4 exam marking, qualifications and results">
+    <option value="Key stage 5 (AS and A Levels)">
+    <option value="Learning Records Service (LRS)">
+    <option value="Looked-after children and children in care">
+    <option value="Maintained school and local authority funding">
+    <option value="Managing school data">
+    <option value="Maths (key stage 1)">
+    <option value="Maths (key stage 2)">
+    <option value="Mental health of children and young people">
+    <option value="National Professional Qualification for Headship (NPQH)">
+    <option value="Ofsted inspection reports and ratings (FE)">
+    <option value="Ofsted inspection reports and ratings (schools)">
+    <option value="Online safety">
+    <option value="Online safety">
+    <option value="Parenting, childcare and children's services">
+    <option value="Performance and inspection of childcare providers">
+    <option value="Personal, social, health and economic education">
+    <option value="Phonics">
+    <option value="Pre-schools and nurseries">
+    <option value="Pregnancy and birth">
+    <option value="Preventing neglect, abuse and exploitation">
+    <option value="Primary curriculum, key stage 1">
+    <option value="Primary curriculum, key stage 2">
+    <option value="Procurement for schools">
+    <option value="Programmes of study (key stage 1)">
+    <option value="Programmes of study (key stage 2)">
+    <option value="Pupil Premium">
+    <option value="Pupil wellbeing, behaviour and attendance">
+    <option value="Pupils and students with special educational needs and disability (SEND)">
+    <option value="Qualified Teacher Status (QTS)">
+    <option value="Recruiting and managing early years staff">
+    <option value="Recruiting and managing school staff">
+    <option value="Refugee, runaway and homeless children">
+    <option value="Running a childcare business">
+    <option value="Running a further or higher education institution">
+    <option value="Running and managing a school">
+    <option value="Safeguarding and child protection">
+    <option value="Safeguarding inspection">
+    <option value="Safeguarding inspection">
+    <option value="Safeguarding pupils">
+    <option value="School admissions">
+    <option value="School attendance and absence">
+    <option value="School buildings and premises">
+    <option value="School bullying">
+    <option value="School complaints and whistleblowing">
+    <option value="School curriculum">
+    <option value="School discipline and exclusions">
+    <option value="School governance">
+    <option value="School inspections and performance">
+    <option value="School insurance and risk management">
+    <option value="School leadership">
+    <option value="School meals, transport and uniform">
+    <option value="Schooling and education choices">
+    <option value="Schooling and education choices">
+    <option value="Schools forums">
+    <option value="Science (key stage 1)">
+    <option value="Science (key stage 2)">
+    <option value="Secondary curriculum, key stage 3 and key stage 4 (GCSEs)">
+    <option value="Sending a child to school">
+    <option value="Sending a child to school">
+    <option value="Serious case reviews">
+    <option value="Serious case reviews">
+    <option value="Setting up or changing the status of a school">
+    <option value="Special educational needs and disability (SEND) code of practice">
+    <option value="Special educational needs and disability (SEND) support in schools">
+    <option value="Special guardianship">
+    <option value="Spiritual, moral, social and cultural development">
+    <option value="Student loans and sponsorship">
+    <option value="Subject Knowledge Enhancement (SKE)">
+    <option value="Support for education work in other countries">
+    <option value="Surrogacy">
+    <option value="Teacher pay, pensions and conditions">
+    <option value="Teacher records">
+    <option value="Teacher training and professional development">
+    <option value="Teaching and leadership">
+    <option value="Teaching standards, conduct and practice">
+    <option value="Tests (key stage 1)">
+    <option value="Tests (key stage 2)">
+    <option value="Traineeships">
+    <option value="Training and professional development for childcare providers">
+    <option value="Types of apprenticeships">
+    <option value="Young carers">
+
+  </datalist>
+
+
+      {% for subtheme in theme %}
+        {% if subtheme.subtheme == subthemeNumber %}
+          {% for group in subtheme.groups %}
+            {% if group.group == groupNumber %}
+
+              <div class="breadcrumbs">
+                <ol>
+                  <li><a href="/tagger/project/content">Education</a></li>
+                  <li><a href="/tagger/project/content">{{ subtheme.name }}</a></li>
+                </ol>
+
+              </div>
+
+              <div class="grid-row">
+                <div class="column-two-thirds">
+                  <h1 class="heading-large">
+                    Tagged items from Group {{ group.group }}
+                  </h1>
+                </div>
+              </div>
+
+              {% set remainingCount = 0 %}
+              {% set doneCount = 0 %}
+
+              {% for item in group.items %}
+                {% if data["tag-subtheme"+subtheme.subtheme+"-group"+group.group+"-item"+item.item]|length == 0 %}
+                  {% set remainingCount = remainingCount +1 %}
+                {% else %}
+                  {% set doneCount = doneCount +1 %}
+                {% endif %}
+              {% endfor %}
+
+
+              <div class="grid-row">
+                <div class="column-one-third">
+                  <h3>
+                    <span class="heading-large">
+
+                    {{remainingCount}}
+
+                    </span><br>
+                    <span class="">Still to do</span><br>
+                    <a href="/tagger/group/content?subthemeNumber={{ subtheme.subtheme }}&groupNumber={{ group.group }}">View</a>
+                  </h3><br>
+                </div>
+                <div class="column-one-third">
+                  <h3>
+                    <span class="heading-large">
+
+                    {{doneCount}}
+
+                    </span><br>
+                    <span class="">Tagged</span><br>
+                  </h3><br>
+                </div>
+              </div>
+
+              <div class="column-one-whole">
+                <form class="form" action="/tagger/project/content" method="post">
+                  <table class="summary-item-body table-type">
+
+                    <thead class="summary-item-field-headings-visible">
+                      <tr>
+                        <th scope="col" class="summary-item-field-heading-first-half" >            
+                          Name
+                        </th>
+
+                        <th scope="col" class="summary-item-field-heading">    
+                          <span>Tags</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      {% for item in group.items %}
+                        {% if data["tag-subtheme"+subtheme.subtheme+"-group"+group.group+"-item"+item.item]|length >= 1 %}
+                          <tr>
+                            <td><a href="{{ item.url }}">{{ item.name }}</a></td>
+                            <td style="text-align: right;">
+                              <input list="browsers" class="form-control" id="tags" name="tag-subtheme{{subtheme.subtheme}}-group{{group.group}}-item{{item.item}}" type="text" style="width: 100%;"  autocomplete="on"  placeholder="E.g. education, training and skills" value={{data["tag-subtheme"+subtheme.subtheme+"-group"+group.group+"-item"+item.item]}}>
+                            </td>
+                          </tr>
+                        {% endif %}
+                      {% endfor %}
+                    </tbody>
+                  </table><br>
+                  <input class="button" type="submit" value="Update">
+                </form>
+
+              </div>
+
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+
+</main>
+
+{% endblock %}
+
+

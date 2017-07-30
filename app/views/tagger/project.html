@@ -1,0 +1,119 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+
+  <div class="breadcrumbs">
+  <ol>
+    <!-- <li><a href="/docs">Digital Marketplace</a></li> -->
+  </ol>
+
+</div>
+
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h1 class="heading-xlarge">
+        Education theme
+      </h1>
+      </div>
+    </div>
+
+    <div class="column-one-whole">
+
+
+      {% for subtheme in theme %}
+        <h2 class="heading-medium">
+          {{ subtheme.name }} sub-team
+        </h2>
+          {% set doneCount = 0 %}
+          {% set remainingCount = 0 %}
+
+          {% for group in subtheme.groups %}
+            {% for item in group.items %}
+              {% if data["tag-subtheme"+subtheme.subtheme+"-group"+group.group+"-item"+item.item]|length >= 1 %}
+                {% set doneCount = doneCount +1 %}
+              {% else %}
+                {% set remainingCount = remainingCount +1 %}
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+
+          <div class="grid-row">
+            <div class="column-one-third">
+              <h3>
+                <span class="heading-large">
+                {{remainingCount}}
+                </span><br>
+                <span class="">Still to do</span>
+              </h3>
+            </div>
+            <div class="column-one-third">
+              <h3>
+                <span class="heading-large">
+                {{doneCount}}
+                </span><br>
+                <span class="">Tagged</span><br>
+                <a href="">Review</a>
+              </h3>
+            </div>
+          </div>
+
+
+        <table class="summary-item-body table-type">
+
+          <thead class="summary-item-field-headings-visible">
+            <tr>
+              <th scope="col" class="summary-item-field-heading-first-half" >            
+                Group
+              </th>
+              
+              <th scope="col" class="summary-item-field-heading">
+                Still to do
+              </th>
+
+              <th scope="col" class="summary-item-field-heading">
+                Tagged
+              </th>
+
+              <th scope="col" class="summary-item-field-heading">    
+                <span>Review needed</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for group in subtheme.groups %}
+
+              {% set doneCount = 0 %}
+              {% set remainingCount = 0 %}
+              {% for item in group.items %}
+                {% if data["tag-subtheme"+subtheme.subtheme+"-group"+group.group+"-item"+item.item]|length == 0 %}
+                  {% set remainingCount = remainingCount +1 %}
+                {% else %}
+                  {% set doneCount = doneCount +1 %}
+                {% endif %}
+              {% endfor %}
+              <tr>
+                <td><a href="/tagger/group/content?subthemeNumber={{ subtheme.subtheme }}&groupNumber={{ group.group }}">Group {{ group.group }}</a></td>
+                <td>
+                {{remainingCount}}
+                </td>
+                <td>{{doneCount}}</td>
+                <td>0</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table><br>
+      {% endfor %}
+    </div>
+
+
+</main>
+
+{% endblock %}
+
+
