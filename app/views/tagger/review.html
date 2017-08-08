@@ -221,11 +221,16 @@
 
               {% for group in subtheme.groups %}
                 {% for item in group.items %}
-                  {% if data["tag-subtheme"+subtheme.subtheme+"-group"+group.group+"-item"+item.item]|length >= 1 %}
+                  {% if data["tag-subtheme"+subtheme.subtheme+"-group"+group.group+"-item"+item.item]|length >= 1 or data["radio-subtheme"+subtheme.subtheme+"-group"+group.group+"-item"+item.item]|length >= 1 %}
                     <tr>
                       <td><a href="{{ item.url }}">{{ item.name }}</a></td>
                       <td>laurence.berry@digital.cabinet-office.gov.uk</td>
-                      <td>Test comment Test comment Test comment Test comment</td>
+                      <td>
+                        <strong>Reason</strong><br>
+                        {{data["radio-subtheme"+subtheme.subtheme+"-group"+group.group+"-item"+item.item]}}
+                        <br><br><strong>Comment</strong><br>
+                        {{data["comment-subtheme"+subtheme.subtheme+"-group"+group.group+"-item"+item.item]}}
+                      </td>
                       <td style="text-align: right;">
                         <input list="browsers" class="form-control" id="tags" name="tag-subtheme{{subtheme.subtheme}}-group{{group.group}}-item{{item.item}}" type="text" style="width: 100%;"  autocomplete="on"  placeholder="Add a tag" value={{data["tag-subtheme"+subtheme.subtheme+"-group"+group.group+"-item"+item.item]}}>
                       </td>

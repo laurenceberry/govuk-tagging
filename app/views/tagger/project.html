@@ -89,12 +89,15 @@
             {% for group in subtheme.groups %}
 
               {% set doneCount = 0 %}
+              {% set reviewCount = 0 %}
               {% set remainingCount = 0 %}
               {% for item in group.items %}
-                {% if data["tag-subtheme"+subtheme.subtheme+"-group"+group.group+"-item"+item.item]|length == 0 %}
-                  {% set remainingCount = remainingCount +1 %}
-                {% else %}
+                {% if data["tag-subtheme"+subtheme.subtheme+"-group"+group.group+"-item"+item.item]|length >= 1 %}
                   {% set doneCount = doneCount +1 %}
+                {% elif data["radio-subtheme"+subtheme.subtheme+"-group"+group.group+"-item"+item.item]|length >= 1 %}
+                  {% set reviewCount = reviewCount +1 %}
+                {% else %}
+                {% set remainingCount = remainingCount +1 %}
                 {% endif %}
               {% endfor %}
               <tr>
@@ -103,7 +106,7 @@
                 {{remainingCount}}
                 </td>
                 <td>{{doneCount}}</td>
-                <td>0</td>
+                <td>{{reviewCount}}</td>
               </tr>
             {% endfor %}
           </tbody>

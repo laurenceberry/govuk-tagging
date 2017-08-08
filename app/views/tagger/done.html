@@ -176,9 +176,9 @@
 
 
       {% for subtheme in theme %}
-        {% if subtheme.subtheme == subthemeNumber %}
+        {% if subtheme.subtheme == subthemeNumber or subtheme.subtheme == data["subthemeNumber"] %}
           {% for group in subtheme.groups %}
-            {% if group.group == groupNumber %}
+            {% if group.group == groupNumber or group.group == data["groupNumber"] %}
 
               <div class="breadcrumbs">
                 <ol>
@@ -233,7 +233,9 @@
               </div>
 
               <div class="column-one-whole">
-                <form class="form" action="/tagger/project/content" method="post">
+                <form class="form" action="/tagger/done/content" method="post">
+                    <input type="hidden" name="subthemeNumber" value="{{subtheme.subtheme}}" />
+                    <input type="hidden" name="groupNumber" value="{{group.group}}" />
                   <table class="summary-item-body table-type">
 
                     <thead class="summary-item-field-headings-visible">
